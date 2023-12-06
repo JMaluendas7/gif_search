@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import { getGifs } from '../helpers/getGifs';
 import { GifItem } from './GifItem';
 import { useFetchGifs } from '../helpers/useFecthGifs';
+
 
 export const GifGrid = ({ category }) => {
 
@@ -18,13 +18,24 @@ export const GifGrid = ({ category }) => {
     //     getImages();
     // }, [])
 
+    let id = 1;
+
+    const onDeleteCategory = ( category ) => {
+        images[category] = []
+    }
+
     return (
         <>
-            <h3>{ category }</h3>
+            <div className='text__category'>
+                <h3 className='category'>{ category }</h3>
+                <div className='category__img'>
+                    <button className='img' onClick={ onDeleteCategory( category ) }></button>
+                </div>
+            </div>
             {
                 isLoading && (<h3>Cargando...</h3>)
             }
-            <div className='card-grid'>
+            <section className='card-grid'>
                 {
                     images.map( ( images ) =>
                     
@@ -33,8 +44,10 @@ export const GifGrid = ({ category }) => {
                             { ...images } />
                     )
                 }
-            </div>        
+            </section>        
         </>
     )
+
+    id += 1;
     
 }

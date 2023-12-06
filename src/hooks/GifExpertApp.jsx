@@ -10,17 +10,25 @@ const GifExpertApp = () => {
         if( categories.includes(newCategory) ) return;
         setCategories([ newCategory, ...categories]);
         // setCategories( cat => [ ...cat, 'Categoria Agregada ']);
+        console.log(categories);
+    }
+
+    const onRemoveCategory = ( category ) => {
+        
     }
 
     return (
         <>
-            {/* Titulo */}
-            <h1>GifExpertApp</h1>
+            <div className='main'>
+                {/* Titulo */}
+                <h1 className='main__title'>GifExpertApp</h1>
+                <p className='main__subtitle'>Busca el tipo de gifs que desees</p>
+            </div>
 
-            {/* Input  */}
-            <AddCategory
-            onNewCategory={ onAddCategory }
-            />
+                {/* Input  */}
+                <AddCategory
+                onNewCategory={ onAddCategory }
+                />
         
             {/* Listado de Gif */}
             {
